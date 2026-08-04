@@ -1,0 +1,31 @@
+@startuml CameraState
+
+[*] --> Boot
+
+Boot --> Preview
+
+Preview --> Capture : Shutter
+
+Capture --> Saving
+
+Saving --> Preview
+
+Preview --> Recording : Record
+
+Recording --> SavingVideo : Stop
+
+SavingVideo --> Preview
+
+Preview --> Playback
+
+Playback --> Preview
+
+Preview --> Menu
+
+Menu --> Preview
+
+Preview --> Shutdown
+
+Shutdown --> [*]
+
+@enduml

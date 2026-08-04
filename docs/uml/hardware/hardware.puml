@@ -1,0 +1,40 @@
+@startuml
+skinparam defaultFontName "Arial"
+skinparam componentStyle rectangle
+left to right direction
+
+package "Pocket Camera" {
+    [Li-ion Battery]
+    [Battery Charger]
+    [Power Management]
+    [Milk-V Duo-S]
+    [MIPI Camera]
+    [MIPI LCD]
+    [Touch Panel]
+    [Buttons]
+    [Status LED]
+    [Buzzer]
+    [Micro SD Card]
+    [USB Type-C]
+    [UART Debug]
+    [WiFi / BT(Optional)]
+}
+
+[Li-ion Battery] --> [Battery Charger]
+[Battery Charger] --> [Power Management]
+[Power Management] --> [Milk-V Duo-S]
+
+[MIPI Camera] --> [Milk-V Duo-S]
+[Milk-V Duo-S] --> [MIPI LCD]
+[Touch Panel] --> [Milk-V Duo-S]
+
+[Buttons] --> [Milk-V Duo-S]
+[Status LED] <-- [Milk-V Duo-S]
+[Buzzer] <-- [Milk-V Duo-S]
+
+[Micro SD Card] <--> [Milk-V Duo-S]
+[USB Type-C] <--> [Milk-V Duo-S]
+[UART Debug] <--> [Milk-V Duo-S]
+[WiFi / BT(Optional)] <--> [Milk-V Duo-S]
+
+@enduml
