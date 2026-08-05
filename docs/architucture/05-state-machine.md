@@ -1,2 +1,2 @@
-
-这里是 Camera 最核心的部分，这里最好画 PlantUML
+## 状态机
+![状态机](../uml/state/state.puml)

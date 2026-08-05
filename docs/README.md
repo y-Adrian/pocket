@@ -10,7 +10,7 @@ Pocket 是一款基于 Milk-V Duo-S 打造的开源便携式智能相机，集�
 
 ### 项目背景
 
-随着手机摄影的发展，普通数码相机逐渐减少，但 Pocket、CCD、小型相机又重新受到很多创作者的欢迎。
+便携易用的 Pocket、CCD、小型相机很受创作者的欢迎。
 
 然而，对于嵌入式开发者而言，很少有一个项目能够完整覆盖：
 
@@ -41,18 +41,16 @@ Pocket 是一款基于 Milk-V Duo-S 打造的开源便携式智能相机，集�
 
 ### 项目特色
 
-
-
 + Linux 系统
-+  Milk-V Duo-S 平台
-+  Camera + ISP
++ Milk-V Duo-S 平台
++ Camera + ISP
 + MIPI LCD 实时显示
-+  LVGL 图形界面
-+  多级菜单
-+  按键交互
-+  JPEG 拍照
-+  H.264 视频录制
-+  USB 导出图片
++ LVGL 图形界面
++ 多级菜单
++ 按键交互
++ JPEG 拍照
++ H.264 视频录制
++ USB 导出图片
 
 ## 项目照片
 
@@ -63,17 +61,21 @@ Pocket 是一款基于 Milk-V Duo-S 打造的开源便携式智能相机，集�
 ...待补充
 
 ## 快速开始
+
 ### 硬件准备
+
 项目需要的硬件如下：
-| Component | Description |
-|---|---|
-| Development Board | Milk-V Duo-S |
-| Camera | OV5647 / GC0834 |
-| Display | ST7701S MIPI LCD |
-| Storage | Micro SD Card |
-| Power | 5V USB-C Power Supply |
+
+| Component         | Description           |
+| ----------------- | --------------------- |
+| Development Board | Milk-V Duo-S          |
+| Camera            | OV5647 / GC0834       |
+| Display           | ST7701S MIPI LCD      |
+| Storage           | Micro SD Card         |
+| Power             | 5V USB-C Power Supply |
 
 硬件连接：
+
 ```plantuml
 Camera  –> Milk-V Duo-S
 LCD     –> MIPI DSI Interface
@@ -81,64 +83,80 @@ Power   –> USB-C 5V
 ```
 
 ### 准备开发环境
+
 依赖：
+
 - Linux host (推荐Ubuntu 22.04)
 - RISC-V 交叉编译工具链
 - Milk-V Duo SDK
 
 克隆代码仓：
+
 ```bash
 git clone https://github.com/y-Adrian/pocket.git
 cd pocket
 ```
 
 开发环境初始化：
+
 ```bash
 source envsetup.sh
 ```
 
-
 ### 构建固件
+
 构建完整的系统：
+
 ```bash
 make
 ```
 
 产物：
+
 ```bash
 output/
 ├── boot.sd
 ├── rootfs.ext4
 └── firmware.bin
 ```
+
 ### Flash Image
+
 插入 SD 卡：
+
 ```bash
 lsblk
 ```
 
 Flash image:
+
 ```bash
 sudo dd if=output/boot.sd of=/dev/sdX bs=4M status=progress
 sync
 ```
+
 将 SD 卡插入到 Milk-V Duo-S
 
 ### 启动 pocket
+
 启动设备
 通过串口登录（ssh也可）
+
 ```bash
 picocom /dev/cu.usbserial-xxxx -b 115200
 ```
 
 启动应用
+
 ```bash
 cd /opt/pocket
 ./pocket_app
 ```
 
 ### 预期结果
+
 启动之后：
+
 - LCD 显示器显示摄像头预览
 - 按钮能够控制菜单
 - 摄像头捕捉能够工作
@@ -153,6 +171,7 @@ cd /opt/pocket
 ![软件架构](uml/software/software-architecture.puml)
 
 ### 状态机
+
 ![状态机](uml/state/state.puml)
 
 ## Roadmap
