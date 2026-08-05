@@ -1,9 +1,7 @@
 #!/bin/bash
 # 挂载点: /home/pocket  ↔  host: .../pocket
-set -x
-set -e
 
-_WORK_ROOT="/home/pocket"
+_WORK_ROOT="/home/adrian/pocket"
 _SDK_ROOT="${_WORK_ROOT}/sdk/milkv-duo-sdk"
 
 # envsetup 的 gettop() 从 $PWD 向上找 duo-sdk；从工作区根 source 时需显式指定 TOP

@@ -14,7 +14,7 @@ package "Pocket Camera" {
     [Buttons]
     [Status LED]
     [Buzzer]
-    [Micro SD Card]
+    [Micro SD Card]ruhe
     [USB Type-C]
     [UART Debug]
     [WiFi / BT(Optional)]

@@ -69,15 +69,16 @@ Pocket 是一款基于 Milk-V Duo-S 打造的开源便携式智能相机，集�
 | Component         | Description           |
 | ----------------- | --------------------- |
 | Development Board | Milk-V Duo-S          |
-| Camera            | OV5647 / GC0834       |
+| Camera            | OV5647 / GC2083       |
 | Display           | ST7701S MIPI LCD      |
 | Storage           | Micro SD Card         |
 | Power             | 5V USB-C Power Supply |
 
 硬件连接：
 
-```plantuml
-Camera  –> Milk-V Duo-S
+```puml
+skinparam dpi 300
+Camera  –> Milk-V Duo-S  
 LCD     –> MIPI DSI Interface
 Power   –> USB-C 5V
 ```
@@ -163,16 +164,57 @@ cd /opt/pocket
 - 系统状态能够被展示
 
 ## 硬件组成
+```puml
+@startuml
+skinparam dpi 300
+skinparam defaultFontName "Arial"
+skinparam componentStyle rectangle
+left to right direction
 
-![硬件组成](uml/hardware/hardware.puml)
+package "Pocket Camera" {
+    [Li-ion Battery]
+    [Battery Charger]
+    [Power Management]
+    [Milk-V Duo-S]
+    [MIPI Camera]
+    [MIPI LCD]
+    [Touch Panel]
+    [Buttons]
+    [Status LED]
+    [Buzzer]
+    [Micro SD Card]
+    [USB Type-C]
+    [UART Debug]
+    [WiFi / BT(Optional)]
+}
+
+[Li-ion Battery] --> [Battery Charger]
+[Battery Charger] --> [Power Management]
+[Power Management] --> [Milk-V Duo-S]
+
+[MIPI Camera] --> [Milk-V Duo-S]
+[Milk-V Duo-S] --> [MIPI LCD]
+[Touch Panel] --> [Milk-V Duo-S]
+
+[Buttons] --> [Milk-V Duo-S]
+[Status LED] <-- [Milk-V Duo-S]
+[Buzzer] <-- [Milk-V Duo-S]
+
+[Micro SD Card] <--> [Milk-V Duo-S]
+[USB Type-C] <--> [Milk-V Duo-S]
+[UART Debug] <--> [Milk-V Duo-S]
+[WiFi / BT(Optional)] <--> [Milk-V Duo-S]
+
+@enduml
+```
 
 ## 软件架构
 
-![软件架构](uml/software/software-architecture.puml)
+[软件架构图](architecture/02-layer-design.md)
 
 ### 状态机
+[状态机](architecture/05-state-machine.md)
 
-![状态机](uml/state/state.puml)
 
 ## Roadmap
 
