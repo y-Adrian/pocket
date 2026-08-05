@@ -1,0 +1,3 @@
+[submodule "sdk/milkv-duo-sdk"]
+	path = sdk/milkv-duo-sdk
+	url = https://github.com/milkv-duo/duo-buildroot-sdk-v2.git
